@@ -39,13 +39,13 @@ module Fluent
           begin
             require filename
           rescue LoadError => e
-            Fluent::ConfigError "Unable to load protobuf definition class file: #{filename}. error: #{e.stacetrace}"
+            Fluent::ConfigError "Unable to load protobuf definition class file: #{filename}. error: #{e.backtrace}"
           end
         else
           begin
             require_relative filename
           rescue LoadError => e
-            Fluent::ConfigError "Unable to load protobuf definition class file: #{filename}. error: #{e.stacetrace}"
+            Fluent::ConfigError "Unable to load protobuf definition class file: #{filename}. error: #{e.backtrace}"
           end
         end
       end
