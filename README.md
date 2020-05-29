@@ -29,7 +29,7 @@ Or install it yourself as:
 </parse>
 ```
 
-**Note:** Protobuf requires to use dot for nested class name seperator:
+**Note:** Protobuf version 3 requires to use dot for nested class name seperator:
 
 `Your::Protobuf::Class::Name` class should be in class_name as follows:
 ```
@@ -45,3 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/cosmo0920/fluent-plugin-parser-protobuf.
+
+## LICENSE
+
+[Apache-2.0](LICENSE).
