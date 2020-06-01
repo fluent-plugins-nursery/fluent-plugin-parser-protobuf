@@ -31,6 +31,8 @@ Users should prepare protocol buffers with the following compilers:
 
 ## Configuration
 
+**Note:** Protocol Buffer v2 files use `.pb.rb` extensions whereas Protocol Buffer v3 files use `_pb.rb` in their filename endings. Please be careful which version is used in your protobuf definitions.
+
 ### For Protobuf 3
 
 ```aconf
