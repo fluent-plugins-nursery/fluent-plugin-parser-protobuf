@@ -18,14 +18,24 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-parser-protobuf
 
+## Prerequisites to use
+
+Users should prepare protocol buffers with the following compilers:
+
+* For Protocol Buffers 2, using [ruby-protoc compiler](https://github.com/codekitchen/ruby-protocol-buffers) is needed.
+* For Protocol Buffers 3, using [the official protoc compiler](https://developers.google.com/protocol-buffers/docs/reference/ruby-generated) is needed.
+
 ## Configuration
+
+### For Protobuf 3
 
 ```aconf
 <parse>
   @type protobuf
-  class_file /path/to/your/protobuf/class_file
-  class_name YourProtobufClassName
-  # include_paths [/path/to/your/protobuf/class_file, /path/to/your/protobuf/class_file2, ...]
+  class_file /path/to/your/protobuf/class_file_pb.rb
+  class_name Your.Protobuf.Class.Name # For protobuf3
+  protobuf_version protobuf3
+  # include_paths [/path/to/your/protobuf/class_file_pb.rb, /path/to/your/protobuf/class_file2_pb.rb, ...]
 </parse>
 ```
 
@@ -34,6 +44,18 @@ Or install it yourself as:
 `Your::Protobuf::Class::Name` class should be in class_name as follows:
 ```
 class_name Your.Protobuf.Class.Name
+```
+
+### For Protobuf 2
+
+```aconf
+<parse>
+  @type protobuf
+  class_file /path/to/your/protobuf/class_file.pb.rb
+  class_name Your::Protobuf::Class::Name # For protobuf2
+  protobuf_version protobuf2
+  # include_paths [/path/to/your/protobuf/class_file.pb.rb, /path/to/your/protobuf/class_file2.pb.rb, ...]
+</parse>
 ```
 
 ## Development
