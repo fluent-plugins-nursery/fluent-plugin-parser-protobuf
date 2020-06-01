@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-parser-protobuf"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Hiroshi Hatake"]
   spec.email         = ["cosmo0920.wp@gmail.com"]
 
