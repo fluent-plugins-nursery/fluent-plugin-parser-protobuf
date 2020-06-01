@@ -1,8 +1,8 @@
 # fluent-plugin-parser-protobuf
 
-![Testing on Windows](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Windows/badge.svg?branch=master)
-![Testing on macOS](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20macOS/badge.svg?branch=master)
-![Testing on Ubuntu](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Ubuntu/badge.svg?branch=master)
+![Testing on Windows](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Windows/badge.svg?branch=master)
+![Testing on macOS](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20macOS/badge.svg?branch=master)
+![Testing on Ubuntu](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Ubuntu/badge.svg?branch=master)
 
 Fluentd parser plugin for [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview).
 
@@ -72,7 +72,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/cosmo0920/fluent-plugin-parser-protobuf.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf.
 
 ## LICENSE
 

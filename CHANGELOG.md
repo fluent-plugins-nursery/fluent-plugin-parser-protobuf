@@ -1,4 +1,4 @@
-## Changelog [[tags]](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/tags)
+## Changelog [[tags]](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/tags)
 
 ### v0.1.1
 - Fix invalid ConfigError usages
