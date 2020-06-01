@@ -11,8 +11,6 @@ module Fluent
     class ProtobufParser < Parser
       Plugin.register_parser('protobuf', self)
 
-      class Error < StandardError; end
-
       config_param :include_paths, :array, default: []
       config_param :class_file, :string, default: nil
       config_param :protobuf_version, :enum, list: [:protobuf2, :protobuf3], default: :protobuf3
