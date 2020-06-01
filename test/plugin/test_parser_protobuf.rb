@@ -35,12 +35,12 @@ class ProtobufParserFilterTest < Test::Unit::TestCase
 
     CONFIG = %[
       class_name "SearchRequest"
-      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "simple_pb"))}
+      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "simple_pb.rb"))}
     ]
 
     CONFIG_NESTED = %[
       class_name "SearchResponse.Result"
-      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "nested_pb"))}
+      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "nested_pb.rb"))}
     ]
 
     def test_parse_simple
