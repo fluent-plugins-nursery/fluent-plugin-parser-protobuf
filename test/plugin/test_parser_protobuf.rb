@@ -3,8 +3,8 @@ require 'date'
 require 'fluent/test/helpers'
 require 'json'
 require 'fluent/test/driver/parser'
-require_relative "../data/simple_pb"
-require_relative "../data/nested_pb"
+require_relative "../data/protobuf3/simple_pb"
+require_relative "../data/protobuf3/nested_pb"
 
 class ProtobufParserFilterTest < Test::Unit::TestCase
   def setup
@@ -34,12 +34,12 @@ class ProtobufParserFilterTest < Test::Unit::TestCase
 
   CONFIG = %[
     class_name "SearchRequest"
-    class_file #{File.expand_path(File.join(__dir__, "..", "data", "simple_pb"))}
+    class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "simple_pb"))}
   ]
 
   CONFIG_NESTED = %[
     class_name "SearchResponse.Result"
-    class_file #{File.expand_path(File.join(__dir__, "..", "data", "nested_pb"))}
+    class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "nested_pb"))}
   ]
 
   def test_parse_simple
