@@ -1,5 +1,9 @@
 # fluent-plugin-parser-protobuf
 
+![Testing on Windows](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Windows/badge.svg?branch=master)
+![Testing on macOS](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20macOS/badge.svg?branch=master)
+![Testing on Ubuntu](https://github.com/cosmo0920/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Ubuntu/badge.svg?branch=master)
+
 Fluentd parser plugin for [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview).
 
 ## Installation
