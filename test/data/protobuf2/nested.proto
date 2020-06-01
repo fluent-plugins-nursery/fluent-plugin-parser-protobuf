@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message Base {
+  message Nested {
+    enum NestedType {
+      One = 1;
+      Two = 2;
+      Three = 3;
+    };
+
+    optional string contents = 1;
+    optional NestedType nested_type = 2;
+  };
+  optional string name = 1;
+};

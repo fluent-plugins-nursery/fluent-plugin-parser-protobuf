@@ -1,5 +1,6 @@
 require "pathname"
 require 'google/protobuf'
+require 'protocol_buffers'
 
 require "fluent/env"
 require "fluent/plugin/parser"
@@ -14,7 +15,7 @@ module Fluent
 
       config_param :include_paths, :array, default: []
       config_param :class_file, :string, default: nil
-      config_param :protobuf_version, :enum, list: [:"3"], default: :"3"
+      config_param :protobuf_version, :enum, list: [:protobuf2, :protobuf3], default: :protobuf3
       config_param :class_name, :string
 
       def configure(conf)
@@ -25,13 +26,31 @@ module Fluent
 
         include_paths.each {|path| load_protobuf_definition(path)} if !include_paths.empty? && loading_required
 
-        @protobuf_descriptor = Google::Protobuf::DescriptorPool.generated_pool.lookup(@class_name).msgclass
+        if @protobuf_version == :protobuf2
+          @protobuf_descriptor = create_prptobuf2_instance(@class_name)
+        elsif @protobuf_version == :protobuf3
+          @protobuf_descriptor = Google::Protobuf::DescriptorPool.generated_pool.lookup(@class_name).msgclass
+        end
       end
 
       def parse(binary)
-        decoded = @protobuf_descriptor.decode(binary.to_s)
-        time = @estimate_current_event ? Fluent::EventTime.now : nil
-        yield time, decoded.to_h
+        if @protobuf_version == :protobuf3
+          decoded = @protobuf_descriptor.decode(binary.to_s)
+          time = @estimate_current_event ? Fluent::EventTime.now : nil
+          yield time, decoded.to_h
+        elsif @protobuf_version == :protobuf2
+          decoded = @protobuf_descriptor.parse(binary.to_s)
+          time = @estimate_current_event ? Fluent::EventTime.now : nil
+          yield time, decoded.to_hash
+        end
+      end
+
+      def create_prptobuf2_instance(class_name)
+        unless Object.const_defined?(class_name)
+          raise Fluent::ConfigError, "Cannot find class #{class_name}."
+        else
+          Object.const_get(class_name)
+        end
       end
 
       def load_protobuf_class(filename)

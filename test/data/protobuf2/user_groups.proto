@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+message User {
+  required string name = 1;
+  required string email = 2;
+  optional int32 logins = 3;
+}
+
+message Group {
+  repeated User users = 1;
+  repeated Group subgroups = 2;
+
+  enum GroupType {
+    Study = 1;
+    Play = 2;
+    Rest = 3;
+  }
+
+  optional GroupType group_type = 3;
+}
