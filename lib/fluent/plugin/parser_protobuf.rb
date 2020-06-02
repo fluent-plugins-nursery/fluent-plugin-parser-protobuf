@@ -56,6 +56,7 @@ module Fluent
           end
         end
       end
+      alias parse_partial_data parse
 
       def create_protobuf2_instance(class_name)
         unless Object.const_defined?(class_name)
