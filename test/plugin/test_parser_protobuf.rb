@@ -41,6 +41,33 @@ class ProtobufParserFilterTest < Test::Unit::TestCase
       protobuf_version protobuf2
     ]
 
+    CONFIG_INVALID = %[
+      class_name "Base::Nested"
+      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf2", "nested.pb.rb"))}
+      include_paths ["#{File.expand_path(File.join(__dir__, "..", "data", "protobuf2", "user_groups.pb.rb"))}"]
+      protobuf_version protobuf2
+    ]
+
+    CONFIG_EMPTY = %[
+      class_name "Base::Empty"
+      protobuf_version protobuf2
+    ]
+
+
+    sub_test_case "configure" do
+      test "invalid" do
+        assert_raise(Fluent::ConfigError) do
+          create_driver(CONFIG_INVALID)
+        end
+      end
+
+      test "empty protobuf settings" do
+        assert_raise(Fluent::ConfigError) do
+          create_driver(CONFIG_EMPTY)
+        end
+      end
+    end
+
     def test_parse_protobuf2
       d = create_driver(CONFIG)
       binary = encoded_user_group
@@ -89,6 +116,31 @@ class ProtobufParserFilterTest < Test::Unit::TestCase
       class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "nested_pb.rb"))}
       protobuf_version protobuf3
     ]
+
+    CONFIG_INVALID = %[
+      class_name "Base::Nested"
+      class_file #{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "nested_pb.rb"))}
+      include_paths ["#{File.expand_path(File.join(__dir__, "..", "data", "protobuf3", "simple_pb.rb"))}"]
+      protobuf_version protobuf3
+    ]
+
+    CONFIG_EMPTY = %[
+      class_name "Base::Empty"
+    ]
+
+    sub_test_case "configure" do
+      test "invalid" do
+        assert_raise(Fluent::ConfigError) do
+          create_driver(CONFIG_INVALID)
+        end
+      end
+
+      test "empty protobuf settings" do
+        assert_raise(Fluent::ConfigError) do
+          create_driver(CONFIG_EMPTY)
+        end
+      end
+    end
 
     def test_parse_simple
       d = create_driver(CONFIG)

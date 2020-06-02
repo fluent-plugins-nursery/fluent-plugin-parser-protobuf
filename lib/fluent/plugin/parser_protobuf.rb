@@ -19,6 +19,15 @@ module Fluent
 
       def configure(conf)
         super
+
+        if !@include_paths.empty? && !@class_file.nil?
+          raise Fluent::ConfigError, "Cannot use `include_paths` and `class_file` at the same time."
+        end
+
+        if @include_paths.empty? && @class_file.nil?
+          raise Fluent::ConfigError, "Need to specify `include_paths` or `class_file`."
+        end
+
         loading_required = Google::Protobuf::DescriptorPool.generated_pool.lookup(class_name).nil?
 
         load_protobuf_class(@class_file) if loading_required && @class_file
