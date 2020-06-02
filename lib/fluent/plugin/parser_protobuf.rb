@@ -25,7 +25,7 @@ module Fluent
         include_paths.each {|path| load_protobuf_definition(path)} if !include_paths.empty? && loading_required
 
         if @protobuf_version == :protobuf2
-          @protobuf_descriptor = create_prptobuf2_instance(@class_name)
+          @protobuf_descriptor = create_protobuf2_instance(@class_name)
         elsif @protobuf_version == :protobuf3
           @protobuf_descriptor = Google::Protobuf::DescriptorPool.generated_pool.lookup(@class_name).msgclass
         end
@@ -43,7 +43,7 @@ module Fluent
         end
       end
 
-      def create_prptobuf2_instance(class_name)
+      def create_protobuf2_instance(class_name)
         unless Object.const_defined?(class_name)
           raise Fluent::ConfigError, "Cannot find class #{class_name}."
         else
