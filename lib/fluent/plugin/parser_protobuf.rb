@@ -31,6 +31,10 @@ module Fluent
         end
       end
 
+      def parser_type
+        :binary
+      end
+
       def parse(binary)
         if @protobuf_version == :protobuf3
           decoded = @protobuf_descriptor.decode(binary.to_s)
