@@ -41,6 +41,7 @@ Users should prepare protocol buffers with the following compilers:
   class_file /path/to/your/protobuf/class_file_pb.rb
   class_name Your.Protobuf.Class.Name # For protobuf3
   protobuf_version protobuf3
+  # suppress_decoding_error false
   # include_paths [/path/to/your/protobuf/class_file_pb.rb, /path/to/your/protobuf/class_file2_pb.rb, ...]
 </parse>
 ```
@@ -60,6 +61,7 @@ class_name Your.Protobuf.Class.Name
   class_file /path/to/your/protobuf/class_file.pb.rb
   class_name Your::Protobuf::Class::Name # For protobuf2
   protobuf_version protobuf2
+  # suppress_decoding_error false
   # include_paths [/path/to/your/protobuf/class_file.pb.rb, /path/to/your/protobuf/class_file2.pb.rb, ...]
 </parse>
 ```

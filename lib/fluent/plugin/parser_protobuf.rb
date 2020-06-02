@@ -15,6 +15,7 @@ module Fluent
       config_param :class_file, :string, default: nil
       config_param :protobuf_version, :enum, list: [:protobuf2, :protobuf3], default: :protobuf3
       config_param :class_name, :string
+      config_param :suppress_decoding_error, :bool, default: false
 
       def configure(conf)
         super
@@ -36,14 +37,23 @@ module Fluent
       end
 
       def parse(binary)
-        if @protobuf_version == :protobuf3
-          decoded = @protobuf_descriptor.decode(binary.to_s)
-          time = @estimate_current_event ? Fluent::EventTime.now : nil
-          yield time, decoded.to_h
-        elsif @protobuf_version == :protobuf2
-          decoded = @protobuf_descriptor.parse(binary.to_s)
-          time = @estimate_current_event ? Fluent::EventTime.now : nil
-          yield time, decoded.to_hash
+        begin
+          if @protobuf_version == :protobuf3
+            decoded = @protobuf_descriptor.decode(binary.to_s)
+            time = @estimate_current_event ? Fluent::EventTime.now : nil
+            yield time, decoded.to_h
+          elsif @protobuf_version == :protobuf2
+            decoded = @protobuf_descriptor.parse(binary.to_s)
+            time = @estimate_current_event ? Fluent::EventTime.now : nil
+            yield time, decoded.to_hash
+          end
+        rescue => e
+          log.warn("Couldn't decode protobuf: #{e.inspect}, message: #{binary}")
+          if @suppress_decoding_error
+            yield nil, nil
+          else
+            raise e
+          end
         end
       end
 
