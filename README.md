@@ -76,6 +76,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf.
 
+## Articles
+
+* FluentdのInputプラグインでProtocol Buffersを扱う -- ククログ https://www.clear-code.com/blog/2020/6/4.html (ja)
+
 ## LICENSE
 
 [Apache-2.0](LICENSE).
