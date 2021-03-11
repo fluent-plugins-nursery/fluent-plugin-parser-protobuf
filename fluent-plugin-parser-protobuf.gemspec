@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "fluentd", [">= 1.0", "< 2"]
   spec.add_runtime_dependency "google-protobuf", ["~> 3.12"]
   spec.add_runtime_dependency "ruby-protocol-buffers"
+  spec.add_runtime_dependency "webrick"
 end
