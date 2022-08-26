@@ -32,7 +32,7 @@ module Fluent
 
         load_protobuf_class(@class_file) if loading_required && @class_file
 
-        include_paths.each {|path| load_protobuf_definition(path)} if !include_paths.empty? && loading_required
+        include_paths.each {|path| load_protobuf_class(path)} if !include_paths.empty? && loading_required
 
         if @protobuf_version == :protobuf2
           @protobuf_descriptor = create_protobuf2_instance(@class_name)
