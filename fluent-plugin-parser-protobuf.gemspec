@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "google-protobuf", ["~> 3.12"]
   spec.add_runtime_dependency "ruby-protocol-buffers"
   spec.add_runtime_dependency "webrick"
+  spec.add_runtime_dependency "racc"
 end
