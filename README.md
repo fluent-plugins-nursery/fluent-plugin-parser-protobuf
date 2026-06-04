@@ -1,8 +1,8 @@
 # fluent-plugin-parser-protobuf
 
-![Testing on Windows](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Windows/badge.svg?branch=master)
-![Testing on macOS](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20macOS/badge.svg?branch=master)
-![Testing on Ubuntu](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/workflows/Testing%20on%20Ubuntu/badge.svg?branch=master)
+![Testing on Windows](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/actions/workflows/windows.yml/badge.svg?branch=master)
+![Testing on macOS](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/actions/workflows/macos.yml/badge.svg?branch=master)
+![Testing on Ubuntu](https://github.com/fluent-plugins-nursery/fluent-plugin-parser-protobuf/actions/workflows/linux.yml/badge.svg?branch=master)
 
 Fluentd parser plugin for [Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview).
 
